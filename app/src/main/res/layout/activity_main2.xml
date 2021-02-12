@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#e7e7e7" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#e7e7e7">
 
     <ListView
         android:visibility="gone"
@@ -13,11 +14,6 @@
         android:divider="@null"
         android:padding="5dp" />
 
-    <ProgressBar
-        android:id="@+id/prgLoading"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true" />
     <TextView
         android:id="@+id/txtAlert"
         android:layout_width="wrap_content"
@@ -27,14 +23,17 @@
         android:layout_centerInParent="true"
         android:visibility="gone"/>
 
+
     <EditText
         android:id="@+id/edtKeyword"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/prgLoading"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="99dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="598dp"
         android:layout_weight="1"
         android:background="@drawable/search_form"
         android:hint="@string/search"
@@ -48,12 +47,47 @@
         android:id="@+id/btnSearch"
         android:layout_width="94dp"
         android:layout_height="33dp"
-        android:layout_above="@+id/prgLoading"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="216dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="600dp"
         android:layout_weight="3"
         android:background="@color/header"
         android:src="@drawable/ic_search" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="270dp"
+        android:layout_marginBottom="521dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Select Categories"
+        android:textColor="@android:color/background_dark"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoryRecycler"
+        android:layout_width="121dp"
+        android:layout_height="346dp"
+        android:layout_alignTop=""
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="277dp"
+        android:layout_marginBottom="158dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
 
 </RelativeLayout>
