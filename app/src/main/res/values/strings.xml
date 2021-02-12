@@ -1,7 +1,11 @@
 <resources>
-    <string name="app_name">mamawaestate</string>
-
-
-    <string name="not_found">Not Found!</string>
-    <string name="search">Search Menu</string>
+    <string name="app_name">mama wa estate</string>
+    <string name="home">   Home</string>
+    <string name="logout">  Log out</string>
+    <string name="history">  History</string>
+    <string name="mycart">  My Cart</string>
+    <string name="category">  Categories</string>
+    <string name="hotdeals">  Hot Deals</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
 </resources>
