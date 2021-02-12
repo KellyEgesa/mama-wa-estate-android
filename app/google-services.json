@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "343875720846",
+    "project_id": "mamawaestate-96b11",
+    "storage_bucket": "mamawaestate-96b11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343875720846:android:97b0d420ba724060d15bdf",
+        "android_client_info": {
+          "package_name": "com.mamawaestate.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343875720846-efgh8lrgdu8sls2g03hbjkacu8rkbu0b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDukrWpb9G19_NkkHdHNv_TneRYd-Ahoxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343875720846-efgh8lrgdu8sls2g03hbjkacu8rkbu0b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
