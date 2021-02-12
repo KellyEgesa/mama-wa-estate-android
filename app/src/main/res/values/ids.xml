@@ -2,4 +2,7 @@
 <resources>
     <item name="registerTextView" type="id" />
     <item name="passwordLoginButton" type="id" />
+    <item name="TextViewItem" type="id" />
+    <item name="textViewQuantity" type="id" />
+    <item name="ImageViewItem" type="id" />
 </resources>
