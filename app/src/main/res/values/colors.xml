@@ -21,9 +21,9 @@
 
     <color name="reddest" />
     <color name="Whitest" />
-    <color name="colorPrimary" />
+
     <color name="hints_2" />
-    <color name="colorAccent" />
+
 
     <color name="header">#ff5722</color>
     <color name="hint">#767676</color>

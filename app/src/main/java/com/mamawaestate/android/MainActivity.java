@@ -10,8 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.mamawaestate.android.Fragments.HomeFragment;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+//import androidx.fragment.app.FragmentManager;
+//import androidx.fragment.app.FragmentTransaction;
 
 
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
