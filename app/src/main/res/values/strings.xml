@@ -4,4 +4,6 @@
 
     <string name="not_found">Not Found!</string>
     <string name="search">Search Menu</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
 </resources>
