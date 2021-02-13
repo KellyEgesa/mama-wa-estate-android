@@ -2,6 +2,11 @@ package com.mamawaestate.android;
 
 import android.os.Bundle;
 
+
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +17,7 @@ import com.mamawaestate.android.Fragments.HomeFragment;
 
 //import androidx.fragment.app.FragmentManager;
 //import androidx.fragment.app.FragmentTransaction;
+
 
 
 
@@ -52,4 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+};
+
 }
+
