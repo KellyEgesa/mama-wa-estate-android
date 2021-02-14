@@ -31,11 +31,8 @@ public class SlideNavigation {
 
         user_img = activity.findViewById(R.id.user_img);
         home = activity.findViewById(R.id.menu_home);
-        hot = activity.findViewById(R.id.menu_hot);
+
         cart = activity.findViewById(R.id.menu_cart);
-        category = activity.findViewById(R.id.menu_cat);
-        about = activity.findViewById(R.id.menu_about);
-        history = activity.findViewById(R.id.menu_his);
         logout = activity.findViewById(R.id.menu_logout);
         user_name = activity.findViewById(R.id.user_name);
 
@@ -62,34 +59,6 @@ public class SlideNavigation {
                         .commit();
             }
         });
-
-        hot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-                fragmentManager
-                        .beginTransaction()
-                        .replace(fragmnetholder, new HotFragment(), "HotFragment")
-                        .addToBackStack("HotFragment")
-                        .commit();
-
-            }
-        });
-
-        category.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-                fragmentManager
-                        .beginTransaction()
-                        .replace(fragmnetholder, new CategoriesFragment(), "CategoriesFragment")
-                        .addToBackStack("CategoriesFragment")
-                        .commit();
-
-            }
-        });
-
-
 
 
         logout.setOnClickListener(new View.OnClickListener() {
