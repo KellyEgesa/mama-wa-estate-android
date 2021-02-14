@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_log"
+    android:background="@color/secondary"
     tools:context=".LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,7 +63,7 @@
             android:layout_width="140dp"
             android:layout_height="48dp"
             android:layout_marginBottom="36dp"
-            android:background="@drawable/rounded_corner"
+            android:background="@color/secondary"
             android:padding="10dp"
             android:text="Log in"
             android:textColor="@color/Whitest"
@@ -113,5 +113,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
