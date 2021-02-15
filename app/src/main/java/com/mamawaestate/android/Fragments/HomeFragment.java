@@ -1,17 +1,20 @@
-package com.mamawaestate.android;
+package com.mamawaestate.android.Fragments;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -25,80 +28,38 @@ import com.google.android.libraries.places.api.model.PlaceLikelihood;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.mamawaestate.android.R;
+import com.mamawaestate.android.userLocation.UserLocation;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MapsFragment {
-    Context mContext;
-    Activity mActivity;
-    Double latitude;
-    Double longitude;
+
+public class HomeFragment extends Fragment {
+
+    Button mLogin;
     String Address;
     String name;
-    private FindCurrentPlaceResponse userPlaces;
-    private Location userLocation;
-    private LocationManager locationManager;
-    private FusedLocationProviderClient fusedLocationClient;
-    private LocationListener locationListener;
+    Double latitude;
+    Double longitude;
+    UserLocation userLocation;
+    TextView location;
 
-    public MapsFragment(Context context, Activity activity) {
-        mActivity = activity;
-        mContext = context;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Places.initialize(getContext(), "AIzaSyB-5gt2UQsAXWRDzlTdBZlJiEavWf65CRc");
 
-        Places.initialize(context, "AIzaSyB-5gt2UQsAXWRDzlTdBZlJiEavWf65CRc");
-
-        PlacesClient placesClient = Places.createClient(context);
+        PlacesClient placesClient = Places.createClient(getContext());
 
         List<Place.Field> placeFields = Collections.singletonList(Place.Field.ADDRESS);
 
-
         FindCurrentPlaceRequest request = FindCurrentPlaceRequest.newInstance(placeFields);
 
-
-        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
-                userLocation = location;
-            }
-        };
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
         } else {
-            //we have permission
-//            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 10, locationListener);
-//            userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-
-//            PlacesSearchResponse requestPlaceSearch = new PlacesSearchResponse();
-//            GeoApiContext contextPlaceSearch = new GeoApiContext.Builder()
-//                    .apiKey("AIzaSyB-5gt2UQsAXWRDzlTdBZlJiEavWf65CRc")
-//                    .build();
-//
-//            LatLng location = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
-
-//            try {
-//                requestPlaceSearch = PlacesApi.nearbySearchQuery(contextPlaceSearch, location)
-//                        .radius(5000)
-//                        .rankby(RankBy.DISTANCE)
-//                        .keyword("estate")
-//                        .type(TypeFilter.ADDRESS)
-//            }
-
-//            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-//
-//            try {
-//                List<Address> listAddresses = geocoder.getFromLocation(-1.3827826,36.9368036
-//                        , 1);
-//                if (listAddresses != null && listAddresses.size() > 0) {
-//                    Log.i("PlaceInfo", listAddresses.get(0).toString());
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
             Task<FindCurrentPlaceResponse> placeResponse = placesClient.findCurrentPlace(request);
             placeResponse.addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -126,6 +87,7 @@ public class MapsFragment {
                         name = "Unnamed";
                     }
                     Log.i("PlacesAddress", Address);
+                    location.setText(Address);
                 } else {
                     Exception exception = task.getException();
                     if (exception instanceof ApiException) {
@@ -138,13 +100,14 @@ public class MapsFragment {
 
         getLastLocationNewMethod();
 
+        userLocation = new UserLocation(latitude, longitude, Address, name);
 
     }
 
     private void getLastLocationNewMethod() {
-        FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mContext);
-        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+        FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
         } else {
             Log.i("granted", mFusedLocationClient.toString());
             mFusedLocationClient.getLastLocation()
@@ -173,27 +136,22 @@ public class MapsFragment {
         }
     }
 
-    public Double getLatitude() {
-        return latitude;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootview = inflater.inflate(R.layout.fragment_home, container, false);
+        location = (TextView) rootview.findViewById(R.id.textLocation);
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        return rootview;
     }
 
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Context getmContext() {
-        return mContext;
-    }
-
-    public Activity getmActivity() {
-        return mActivity;
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }
