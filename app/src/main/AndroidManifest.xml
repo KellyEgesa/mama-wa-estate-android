@@ -18,6 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mamawaestate">
 
+        <activity android:name=".ShoppingCartActivity"></activity>
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".CatalogActivity" />
+
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
@@ -43,7 +47,11 @@
             android:value="@string/google_maps_key" />
 
 
+        <activity android:name=".CheckOutActivity" />
+
+
         <activity android:name=".CheckOutActivity"/>
+
     </application>
 
 </manifest>
