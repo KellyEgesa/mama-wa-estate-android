@@ -32,10 +32,11 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.loginButton2)
     Button mLogin;
 
-    private ProgressDialog progressDialog;
-
     LocationManager locationManager;
     LocationListener locationListener;
+
+    private ProgressDialog progressDialog;
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             if (ContextCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 10, locationListener);
+
             }
         }
     }
@@ -54,13 +56,23 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+
+//        MapsFragment mapsFragment = new MapsFragment(LoginActivity.this, LoginActivity.this);
+
+
+//        Log.i("PlacesTrial", mapsFragment.getmActivity().getLocalClassName());
+
+
         loadingScreen();
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
+
+
             }
         });
 
@@ -72,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
     private void logIn() {
         String userEmailText = userEmail.getText().toString().trim();
         String userPasswordText = userPassword.getText().toString().trim();
@@ -81,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         progressDialog.show();
+
 
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
