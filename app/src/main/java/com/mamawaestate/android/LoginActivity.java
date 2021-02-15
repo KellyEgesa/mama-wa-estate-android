@@ -1,17 +1,6 @@
 package com.mamawaestate.android;
 
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class LoginActivity extends AppCompatActivity {
-
-    private Button LoginButton2;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -32,8 +21,9 @@ import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class LoginActivity extends AppCompatActivity {
+
+
 
     @BindView(R.id.registerTextView2)
     TextView createAccount;
@@ -48,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     LocationListener locationListener;
 
     private ProgressDialog progressDialog;
+    private Button LoginButton2;
 
 
     @Override
