@@ -1,13 +1,19 @@
 package com.mamawaestate.android;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Geocoder;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.common.api.Status;
@@ -22,11 +28,24 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class SearchPlace extends Fragment {
+    LocationManager locationManager;
+    LocationListener locationListener;
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 10, locationListener);
+            }
+        }
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -38,8 +57,13 @@ public class SearchPlace extends Fragment {
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(@NonNull Place place) {
-
-                Toast.makeText(getContext(), place.getName()+ place.getId(), Toast.LENGTH_LONG).show();
+                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                try {
+                    Log.i("Places", geocoder.getFromLocationName(place.getName(), 1).toString());
+                    Log.i("PlacesB",place.toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -52,6 +76,11 @@ public class SearchPlace extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+//        try {
+////            MapsFragment mapsFragment = new MapsFragment(getContext(), getActivity());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         Places.initialize(getContext(), "AIzaSyB-5gt2UQsAXWRDzlTdBZlJiEavWf65CRc");
 
         PlacesClient placesClient = Places.createClient(getContext());
