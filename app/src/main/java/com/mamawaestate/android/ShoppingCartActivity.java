@@ -1,26 +1,38 @@
 package com.mamawaestate.android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import java.util.List;
 
-public class ShoppingCartActivity extends Activity {
+public class ShoppingCartActivity extends Fragment {
 
     private List<Product> mCartList;
+    ListView listViewCatalog;
     private ProductAdapter mProductAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shoppingcart);
+//        setContentView(R.layout.shoppingcart);
 
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.shoppingcart, container, false);
+
+        listViewCatalog = (ListView) rootView.findViewById(R.id.ListViewCatalog);
 
         mCartList = ShoppingCartHelper.getCartList();
 
@@ -30,7 +42,7 @@ public class ShoppingCartActivity extends Activity {
         }
 
         // Create the list
-        final ListView listViewCatalog = (ListView) findViewById(R.id.ListViewCatalog);
+
         mProductAdapter = new ProductAdapter(mCartList, getLayoutInflater(), true);
         listViewCatalog.setAdapter(mProductAdapter);
 
@@ -39,16 +51,17 @@ public class ShoppingCartActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                Intent productDetailsIntent = new Intent(getBaseContext(),ProductDetailsActivity.class);
+                Intent productDetailsIntent = new Intent(getActivity().getBaseContext(),ProductDetailsActivity.class);
                 productDetailsIntent.putExtra(ShoppingCartHelper.PRODUCT_INDEX, position);
                 startActivity(productDetailsIntent);
             }
         });
+        return super.onCreateView(inflater, container, savedInstanceState);
 
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
         // Refresh the data

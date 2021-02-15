@@ -1,7 +1,6 @@
 package com.mamawaestate.android;
 
 import android.app.Activity;
-
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,15 +9,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
 import com.alexzh.circleimageview.CircleImageView;
-import com.mamawaestate.android.Fragments.CategoriesFragment;
 import com.mamawaestate.android.Fragments.HomeFragment;
-import com.mamawaestate.android.Fragments.HotFragment;
 import com.mamawaestate.android.Fragments.ProfileFragment;
 
 
 public class SlideNavigation {
     int fragmnetholder;
-    TextView user_name, home, hot, cart, category, about, logout, history;
+    TextView user_name, home,  cart, logout;
     CircleImageView user_img;
 
 
@@ -57,6 +54,18 @@ public class SlideNavigation {
                         .beginTransaction()
                         .replace(fragmnetholder, new HomeFragment(), "HomeFragment")
                         .commit();
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+                fragmentManager
+                        .beginTransaction()
+                        .replace(fragmnetholder, new ShoppingCartActivity(), "ShoppingCart")
+                        .commit();
+
             }
         });
 

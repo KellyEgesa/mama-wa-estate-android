@@ -1,7 +1,9 @@
 package com.mamawaestate.android;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import com.mamawaestate.android.userLocation.UserLocation;
 import org.parceler.Parcels;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 //import androidx.fragment.app.FragmentManager;
 //import androidx.fragment.app.FragmentTransaction;
@@ -24,14 +27,15 @@ public class MainActivity extends AppCompatActivity {
     UserLocation userLocation;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    @BindView(R.id.textLocation)
-    TextView location;
+    @BindView(R.id.cart)
+    ImageView cart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ButterKnife.bind(this);
 
         userLocation = Parcels.unwrap(getIntent().getParcelableExtra("userLocation"));
 //
@@ -39,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                startActivity(intent);
+            }
+        });
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -62,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
-
-
     }
 
 

@@ -1,17 +1,6 @@
 package com.mamawaestate.android;
 
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class LoginActivity extends AppCompatActivity {
-
-    private Button LoginButton2;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -68,22 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        LoginButton2 = (Button) findViewById(R.id.loginButton2);
-        LoginButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
-
         ButterKnife.bind(this);
-
-
-//        MapsFragment mapsFragment = new MapsFragment(LoginActivity.this, LoginActivity.this);
-
-
-//        Log.i("PlacesTrial", mapsFragment.getmActivity().getLocalClassName());
 
 
         loadingScreen();
