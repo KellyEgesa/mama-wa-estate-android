@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/secondary"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <com.alexzh.circleimageview.CircleImageView
         android:id="@+id/user_img"

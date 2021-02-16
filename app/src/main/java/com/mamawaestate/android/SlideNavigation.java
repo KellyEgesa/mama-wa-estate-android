@@ -57,18 +57,6 @@ public class SlideNavigation {
             }
         });
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-                fragmentManager
-                        .beginTransaction()
-                        .replace(fragmnetholder, new ShoppingCartActivity(), "ShoppingCart")
-                        .commit();
-
-            }
-        });
-
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
