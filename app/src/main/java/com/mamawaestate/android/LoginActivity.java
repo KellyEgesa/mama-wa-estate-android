@@ -3,10 +3,13 @@ package com.mamawaestate.android;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +19,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import com.mamawaestate.android.userLocation.UserLocation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,11 +36,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText userPassword;
     @BindView(R.id.loginButton2)
     Button mLogin;
-
-    private ProgressDialog progressDialog;
-
     LocationManager locationManager;
     LocationListener locationListener;
+    UserLocation userLocation;
+    private ProgressDialog progressDialog;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor mEditor;
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -54,13 +61,19 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = preferences.edit();
+
         loadingScreen();
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
+
+
             }
         });
 
@@ -70,7 +83,17 @@ public class LoginActivity extends AppCompatActivity {
                 logIn();
             }
         });
+
+        boolean Islogin = preferences.getBoolean("Islogin", false);
+        Log.i("AAAA", String.valueOf(Islogin));
+        if(Islogin)
+        {   // condition true means user is already login
+            Intent intent = new Intent(LoginActivity.this, MapActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
     }
+
 
     private void logIn() {
         String userEmailText = userEmail.getText().toString().trim();
@@ -82,12 +105,11 @@ public class LoginActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
+        Intent intent = new Intent(LoginActivity.this, MapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-
         progressDialog.dismiss();
-
 
     }
 
@@ -117,4 +139,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+
 }
+
+}
+

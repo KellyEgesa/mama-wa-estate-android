@@ -1,5 +1,6 @@
 package com.mamawaestate.android;
 
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,9 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_login);
+
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
@@ -69,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 
@@ -108,5 +112,6 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
         return true;
+
     }
 }

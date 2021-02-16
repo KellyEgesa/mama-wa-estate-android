@@ -46,9 +46,17 @@ dependencies {
 
     implementation 'com.alexzh:circleimageview:1.1.2@aar'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    implementation 'com.google.firebase:firebase-database:19.6.0'
+
     implementation 'com.google.android.gms:play-services-places:17.0.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
+    implementation 'com.google.maps:google-maps-services:0.11.0'
+
+
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -83,19 +91,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
-
-    //Add firebase SDK
-//Realtime Database for firebase data saving
-    implementation 'com.google.firebase:firebase-database:19.5.1'
-// FirebaseUI for Firebase Realtime Database
-    implementation 'com.google.firebase:firebase-core:18.0.2'
-//Realtime Database for firebase data saving
-    implementation 'com.google.firebase:firebase-database:19.6.0'
-// FirebaseUI for Firebase Realtime Database
-    implementation 'com.firebaseui:firebase-ui-database:6.3.0'
-    implementation 'com.google.android.material:material:1.2.1'
-//Firebase User Authentication
-
-    implementation 'com.google.firebase:firebase-auth:20.0.2'
 
 }
