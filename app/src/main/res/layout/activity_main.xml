@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar_layout" />
+    />
 
     <androidx.drawerlayout.widget.DrawerLayout
 
@@ -18,7 +18,7 @@
         android:background="@android:color/white"
         android:fitsSystemWindows="true">
 
-        <include layout="@layout/content_main" />
+
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation_view"
@@ -27,7 +27,7 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true">
 
-            <include layout="@layout/nav_layout" />
+            
         </com.google.android.material.navigation.NavigationView>
 
 
