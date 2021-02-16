@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbarSize="2dp">
+    android:scrollbarSize="1dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <androidx.gridlayout.widget.GridLayout
             android:layout_width="wrap_content"
@@ -24,8 +25,10 @@
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:onClick="filter"
+                android:tag="All"
                 app:cardBackgroundColor="#4C5058"
                 app:cardCornerRadius="7.5dp"
                 app:cardElevation="2dp"
@@ -48,7 +51,9 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="30dp"
+                android:onClick="filter"
+                android:tag="Food"
                 app:cardBackgroundColor="#E3BBB4"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
@@ -60,15 +65,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Woman Fashion"
+                    android:padding="3dp"
+                    android:text="Food"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="12sp" />
             </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="30dp"
+                android:onClick="filter"
+                android:tag="Clothing"
                 app:cardBackgroundColor="#D9D9D9"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
@@ -80,14 +88,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Man Fashion"
+                    android:padding="3dp"
+                    android:text="Clothing"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="12sp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="30dp"
+                android:onClick="filter"
+                android:padding="3dp"
+                android:tag="Pharmacy"
                 app:cardBackgroundColor="#D3A687"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
@@ -99,15 +111,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Beauty &amp; Perfumes"
+                    android:text="Pharmacy"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="12sp" />
             </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="30dp"
+                android:onClick="filter"
+                android:tag="Electronics"
                 app:cardBackgroundColor="#B7EC9E"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
@@ -119,15 +133,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:padding="3dp"
                     android:text="Electronics"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="12sp" />
             </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="30dp"
+                android:onClick="filter"
+                android:tag="Services"
                 app:cardBackgroundColor="#30A8B7"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
@@ -139,15 +156,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Mobiles &amp; Tablets"
+                    android:padding="3dp"
+                    android:text="Services"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="12sp" />
             </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="30dp"
+                android:onClick="filter"
+                android:tag="General"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="2dp"
@@ -159,9 +179,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Food"
+                    android:text="General"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="12sp" />
             </androidx.cardview.widget.CardView>
 
 
