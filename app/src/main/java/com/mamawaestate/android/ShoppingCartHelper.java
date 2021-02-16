@@ -1,5 +1,6 @@
 package com.mamawaestate.android;
 
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class ShoppingCartHelper {
     private static List<Product> catalog;
     private static Map<Product, ShoppingCartEntry> cartMap = new HashMap<Product, ShoppingCartEntry>();
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     public static List<Product> getCatalog(Resources res){
         if(catalog == null) {
             catalog = new Vector<Product>();
