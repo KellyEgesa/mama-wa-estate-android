@@ -1,5 +1,6 @@
 package com.mamawaestate.android;
 
+
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -25,8 +26,9 @@ import com.mamawaestate.android.userLocation.UserLocation;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class LoginActivity extends AppCompatActivity {
+
+
 
     @BindView(R.id.registerTextView2)
     TextView createAccount;
@@ -40,8 +42,12 @@ public class LoginActivity extends AppCompatActivity {
     LocationListener locationListener;
     UserLocation userLocation;
     private ProgressDialog progressDialog;
+
+    private Button LoginButton2;
+
     private SharedPreferences preferences;
     private SharedPreferences.Editor mEditor;
+
 
 
     @Override
