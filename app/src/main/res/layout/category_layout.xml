@@ -166,7 +166,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:onClick="filter"
                 android:tag="General"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="5dp"

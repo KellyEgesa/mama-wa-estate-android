@@ -81,13 +81,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         ButterKnife.bind(this);
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
 
-            }
-        };
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -108,6 +102,55 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setUserLocation(googleMap);
         setNewUserLocation(googleMap);
         getLastLocationNewMethod(googleMap);
+
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+                originalLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                Geocoder geocoder = new Geocoder(MapActivity.this, Locale.getDefault());
+                try {
+                    List<android.location.Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 4);
+
+                    Address = addresses.get(0).getAddressLine(0);
+
+                    Log.i("PLACESS", geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 4).get(0).toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                LatLng user = new LatLng(location.getLatitude(), location.getLongitude());
+                googleMap.clear();
+                googleMap.addMarker(new MarkerOptions()
+                        .position(user)
+                        .title("Marker in Sydney"));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user, 18));
+                Log.i("PlaceCurrent", location.toString());
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(@NonNull String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(@NonNull String provider) {
+
+            }
+        };
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 10, locationListener);
+        }
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,8 +201,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
         } else {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 10, locationListener);
-
             Log.i("granted", mFusedLocationClient.toString());
             mFusedLocationClient.getLastLocation()
                     .addOnSuccessListener(new OnSuccessListener<Location>() {

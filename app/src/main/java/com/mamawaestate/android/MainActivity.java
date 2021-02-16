@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mListVendorsRecyclerView;
     @BindView(R.id.textLocation)
     TextView location;
+    @BindView(R.id.ChangeYourLocation) TextView mChangeYourLocation;
     private SharedPreferences preferences;
     private SharedPreferences.Editor mEditor;
 
@@ -128,13 +129,15 @@ public class MainActivity extends AppCompatActivity {
 
         SlideNavigation slideNavigation = new SlideNavigation(R.id.main_fragment_container);
         slideNavigation.initSlideMenu(MainActivity.this, getSupportFragmentManager(), drawerLayout);
-    }
 
-    public void changeLocation() {
-        Intent intent = new Intent(MainActivity.this, MapActivity.class);
-        startActivity(intent);
+        mChangeYourLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

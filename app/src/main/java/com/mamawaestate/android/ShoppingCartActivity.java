@@ -1,18 +1,20 @@
 package com.mamawaestate.android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 public class ShoppingCartActivity extends Activity {
+    @BindView(R.id.ProceedToCheckout)
+    Button mProceedToCheckout;
 
     private List<Product> mCartList;
     private ProductAdapter mProductAdapter;
@@ -26,7 +28,7 @@ public class ShoppingCartActivity extends Activity {
         mCartList = ShoppingCartHelper.getCartList();
 
         // Make sure to clear the selections
-        for(int i=0; i<mCartList.size(); i++) {
+        for (int i = 0; i < mCartList.size(); i++) {
             mCartList.get(i).selected = false;
         }
 
@@ -40,11 +42,13 @@ public class ShoppingCartActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                Intent productDetailsIntent = new Intent(getBaseContext(),ProductDetailsActivity.class);
+                Intent productDetailsIntent = new Intent(getBaseContext(), ProductDetailsActivity.class);
                 productDetailsIntent.putExtra(ShoppingCartHelper.PRODUCT_INDEX, position);
                 startActivity(productDetailsIntent);
             }
         });
+
+
 
     }
 
@@ -53,7 +57,7 @@ public class ShoppingCartActivity extends Activity {
         super.onResume();
 
         // Refresh the data
-        if(mProductAdapter != null) {
+        if (mProductAdapter != null) {
             mProductAdapter.notifyDataSetChanged();
         }
     }
