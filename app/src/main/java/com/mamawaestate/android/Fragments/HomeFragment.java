@@ -1,6 +1,7 @@
 package com.mamawaestate.android.Fragments;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -8,7 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,17 +39,21 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    Button mLogin;
     String Address;
     String name;
     Double latitude;
     Double longitude;
     UserLocation userLocation;
     TextView location;
+    LinearLayout mainHome;
+    private ProgressDialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadingScreen();
+
+
         Places.initialize(getContext(), "AIzaSyB-5gt2UQsAXWRDzlTdBZlJiEavWf65CRc");
 
         PlacesClient placesClient = Places.createClient(getContext());
@@ -88,18 +93,18 @@ public class HomeFragment extends Fragment {
                     }
                     Log.i("PlacesAddress", Address);
                     location.setText(Address);
+                    progressDialog.dismiss();
                 } else {
                     Exception exception = task.getException();
                     if (exception instanceof ApiException) {
                         ApiException apiException = (ApiException) exception;
-                        Log.e("TAG", "Place not found: " + apiException.getStatusCode());
+                        Log.e("TAG", "Place not found: " + apiException.getMessage());
                     }
                 }
             });
         }
 
         getLastLocationNewMethod();
-
         userLocation = new UserLocation(latitude, longitude, Address, name);
 
     }
@@ -121,6 +126,8 @@ public class HomeFragment extends Fragment {
                                 Log.i("Place", location.toString());
                                 Log.i("PlaceLatitude", latitude.toString());
                                 Log.i("Place", longitude.toString());
+
+
                             } else {
                                 Log.i("Place", "location.toString()");
                             }
@@ -140,6 +147,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_home, container, false);
         location = (TextView) rootview.findViewById(R.id.textLocation);
+        mainHome = (LinearLayout) rootview.findViewById(R.id.mainHome);
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +156,14 @@ public class HomeFragment extends Fragment {
         });
 
         return rootview;
+    }
+
+    private void loadingScreen() {
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Getting Your Location");
+        progressDialog.setMessage("Searching....");
+        progressDialog.setCancelable(false);
+
     }
 
     @Override

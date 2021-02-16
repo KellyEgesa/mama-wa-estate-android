@@ -45,20 +45,11 @@ public class SignUpActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private Button CreateUserButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        CreateUserButton = (Button) findViewById(R.id.loginButton2);
-        CreateUserButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
@@ -94,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 

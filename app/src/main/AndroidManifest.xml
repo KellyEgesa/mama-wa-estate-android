@@ -22,8 +22,15 @@
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".CatalogActivity" />
 
+
+        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".ShoppingCartActivity" />
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".CatalogActivity" />
+
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" >
-
-        </activity>
+        <activity android:name=".MainActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -46,11 +51,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
         <activity android:name=".CheckOutActivity" />
-
-
-        <activity android:name=".CheckOutActivity"/>
 
     </application>
 
