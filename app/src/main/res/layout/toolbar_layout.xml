@@ -25,11 +25,16 @@
             android:id="@+id/cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            tools:srcCompat="@drawable/ic_baseline_shopping_cart_32" />
+            android:onClick="navigateToCart"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_baseline_shopping_cart_32" />
 
     </androidx.appcompat.widget.Toolbar>
+
 
 
 </com.google.android.material.appbar.AppBarLayout>
