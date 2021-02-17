@@ -9,5 +9,14 @@
 
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
+    <string name="registration">registration</string>
+    <string name="select_what_you_own">select_what_you_own</string>
+    <string name="Electronic_stor">Electronic_store</string>
+    <string name="grocery_store">grocery_store</string>
+    <string name="select_shop">select_shop</string>
+    <string name="register">register</string>
+    <string name="reg_once">Registration can be done only once, so please enter the correct credentials</string>
+    <string name="your_phone">your_phone number</string>
+    <string name="locationpin">location</string>
 
 </resources>
