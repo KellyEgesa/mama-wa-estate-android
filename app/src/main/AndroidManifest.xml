@@ -21,12 +21,7 @@
         <activity android:name=".ShoppingCartActivity"></activity>
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".CatalogActivity" />
-
-
         <activity android:name=".MapActivity"></activity>
-        <activity android:name=".ShoppingCartActivity" />
-        <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".CatalogActivity" />
 
         <activity android:name=".SignUpActivity" />
         <activity
