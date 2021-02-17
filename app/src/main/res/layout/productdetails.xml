@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="5dip"
-            android:text="Dead or Alive"
+            android:text="The best shoe around."
             android:textColor="#000000"
             android:textSize="26dip">
 
@@ -46,7 +46,7 @@
         android:id="@+id/TextViewProductDetails"
 
         android:layout_width="100dp"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         android:layout_margin="5dip"
         android:layout_weight="1"
         android:text="Product description"
