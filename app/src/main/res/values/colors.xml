@@ -4,7 +4,7 @@
     <color name="gray">#9f9f9f</color>
     <color name="bg_gray">#e6e6e5</color>
     <color name="colorAccent">#f39225</color>
-    <color name="colorPrimary">#3f4d50</color>
+    <color name="colorPrimary">#9fa8da</color>
     <color name="colorPrimaryDark">#2f383a</color>
     <color name="gray_lite">#649f9f9f</color>
 
@@ -21,12 +21,13 @@
 
     <color name="reddest" />
     <color name="Whitest" />
-    <color name="colorPrimary" />
+
     <color name="hints_2" />
-    <color name="colorAccent" />
+
 
     <color name="header">#ff5722</color>
     <color name="hint">#767676</color>
     <color name="textWhite">#F3F1F1</color>
+    <color name="textBlack">#090101</color>
 
 </resources>
