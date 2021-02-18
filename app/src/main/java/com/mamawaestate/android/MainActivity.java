@@ -1,53 +1,40 @@
 package com.mamawaestate.android;
 
-import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.mamawaestate.android.Fragments.HomeFragment;
-
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-
-
 public class MainActivity extends AppCompatActivity {
-    ActionBarDrawerToggle actionBarDrawerToggle;
-    DrawerLayout drawerLayout;
-    Toolbar toolbar;
-
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.drawer_open, R.string.drawer_close);
-
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.main_fragment_container, new HomeFragment(), "HomeFragment")
-                .commit();
-
-        SlideNavigation slideNavigation = new SlideNavigation(R.id.main_fragment_container);
-        slideNavigation.initSlideMenu(MainActivity.this, getSupportFragmentManager(), drawerLayout);
+        radioGroup = findViewById(R.id.radioGroup);
+        textView = findViewById(R.id.text_view_selected);
+        Button buttonApply = findViewById(R.id.button_apply);
+        buttonApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int radioId = radioGroup.getCheckedRadioButtonId();
+                radioButton = findViewById(radioId);
+                textView.setText("Your choice: " + radioButton.getText());
+            }
+        });
     }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        actionBarDrawerToggle.syncState();
-
+    public void checkButton(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        Toast.makeText(this, "Selected Radio Button: " + radioButton.getText(),
+                Toast.LENGTH_SHORT).show();
     }
 }

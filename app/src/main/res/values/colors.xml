@@ -27,5 +27,6 @@
 
     <color name="header">#ff5722</color>
     <color name="hint">#767676</color>
+    <color name="textWhite">#F3F1F1</color>
 
 </resources>

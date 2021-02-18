@@ -10,5 +10,8 @@
 
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
+    <string name="registration">Registration</string>
+    <string name="select_what_you_own">select_what_you_own</string>
+    <string name="select_shop">select_shop</string>
 
 </resources>
