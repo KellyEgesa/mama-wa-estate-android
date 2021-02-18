@@ -1,7 +1,5 @@
 package com.mamawaestate.android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class CatalogActivity extends MainActivity {
+public class CatalogActivity extends Activity {
 
     private List<Product> mProductList;
 
