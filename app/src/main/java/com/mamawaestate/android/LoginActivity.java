@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         Log.i("AAAA", String.valueOf(Islogin));
         if(Islogin)
         {   // condition true means user is already login
-            Intent intent = new Intent(LoginActivity.this, MapActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        Intent intent = new Intent(LoginActivity.this, MapActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         progressDialog.dismiss();

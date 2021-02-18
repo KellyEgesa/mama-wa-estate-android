@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class CatalogActivity extends Activity {
+public class CatalogActivity extends MainActivity {
 
     private List<Product> mProductList;
 
