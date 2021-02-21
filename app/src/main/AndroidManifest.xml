@@ -24,8 +24,10 @@
         <activity android:name=".MapActivity"></activity>
 
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity" />
+
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
