@@ -1,5 +1,6 @@
 package com.mamawaestate.android;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class ProductAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewItem item;
@@ -52,6 +54,9 @@ public class ProductAdapter extends BaseAdapter {
 
             item.productQuantity = (TextView) convertView
                     .findViewById(R.id.textViewQuantity);
+            item.productPrice = (TextView) convertView
+                    .findViewById(R.id.textViewPrice);
+
 
             convertView.setTag(item);
         } else {
@@ -62,6 +67,7 @@ public class ProductAdapter extends BaseAdapter {
 
         item.productImageView.setImageDrawable(curProduct.productImage);
         item.productTitle.setText(curProduct.title);
+        item.productPrice.setText(String.valueOf(curProduct.price));
 
         // Show the quantity in the cart or not
         if (mShowQuantity) {
@@ -79,6 +85,7 @@ public class ProductAdapter extends BaseAdapter {
         ImageView productImageView;
         TextView productTitle;
         TextView productQuantity;
+        TextView productPrice;
     }
 
 }

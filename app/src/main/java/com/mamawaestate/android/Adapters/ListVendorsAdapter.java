@@ -1,16 +1,21 @@
 package com.mamawaestate.android.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mamawaestate.android.CatalogActivity;
 import com.mamawaestate.android.R;
 import com.mamawaestate.android.models.Vendors;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -52,15 +57,27 @@ public class ListVendorsAdapter extends RecyclerView.Adapter<ListVendorsAdapter.
         TextView mVendorsLocation;
         @BindView(R.id.vendorsCategory)
         TextView mVendorsCategory;
-
+        @BindView(R.id.cardVendor)
+        CardView card;
+Context mContext;
 
         public ListVendorsHolder(@NonNull View itemView) {
 
             super(itemView);
             ButterKnife.bind(this, itemView);
+            mContext = itemView.getContext();
+
         }
 
         public void bindListVendors(Vendors vendors) {
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, CatalogActivity.class);
+                    intent.putExtra("vendors", Parcels.wrap(vendors));
+                    mContext.startActivity(intent);
+                }
+            });
             mVendorsName.setText(vendors.getName());
             mVendorsLocation.setText(vendors.getLocation());
             mVendorsCategory.setText(vendors.getCategory());

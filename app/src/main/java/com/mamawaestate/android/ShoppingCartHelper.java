@@ -31,6 +31,7 @@ public class ShoppingCartHelper {
             catalog.add(new Product("Watchmen", res
                     .getDrawable(R.drawable.shoe),
                     "Watchmen by Alan Moore and Dave Gibbons", 14.99));
+
         }
 
         return catalog;

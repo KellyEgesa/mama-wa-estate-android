@@ -114,8 +114,10 @@ public class MainActivity extends AppCompatActivity {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
-                startActivity(intent);
+                Intent viewShoppingCartIntent = new Intent(getBaseContext(), ShoppingCartActivity.class);
+                viewShoppingCartIntent.putExtra("userLocation", Parcels.wrap(userLocation));
+                startActivity(viewShoppingCartIntent);
+
             }
         });
 

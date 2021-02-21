@@ -98,7 +98,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         setUserLocation(googleMap);
         setNewUserLocation(googleMap);
         getLastLocationNewMethod(googleMap);

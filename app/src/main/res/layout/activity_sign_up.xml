@@ -107,6 +107,13 @@
             android:textSize="20sp" />
 
 
+        <CheckBox
+            android:id="@+id/checkBoxVendor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sell With Us"
+            android:textColor="#161e24" />
+
         <Button
             android:id="@+id/createUserButton"
             android:layout_width="match_parent"

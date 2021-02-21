@@ -4,21 +4,10 @@ package com.mamawaestate.android;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import butterknife.BindView;
-
-
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -41,6 +30,8 @@ public class SignUpActivity extends AppCompatActivity {
     Button createUser;
     @BindView(R.id.loginTextView)
     TextView logIn;
+    @BindView(R.id.checkBoxVendor)
+    CheckBox mCheckBoxVendor;
 
     private ProgressDialog progressDialog;
     private Button CreateUserButton;
@@ -85,10 +76,14 @@ public class SignUpActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        if (mCheckBoxVendor.isChecked()) {
 
+        } else {
+            Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
+        }
     }
 
     private void loadingScreen() {

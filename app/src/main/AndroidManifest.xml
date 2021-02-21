@@ -19,7 +19,7 @@
         android:theme="@style/Theme.Mamawaestate">
 
         <activity android:name=".ShoppingCartActivity"></activity>
-        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".ProductDetailsFragment" />
         <activity android:name=".CatalogActivity" />
         <activity android:name=".MapActivity"></activity>
 
