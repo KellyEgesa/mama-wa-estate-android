@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +13,15 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mamawaestate.android.userLocation.UserLocation;
 
-import org.parceler.Parcels;
-
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ShoppingCartActivity extends AppCompatActivity {
     UserLocation userLocation;
+    @BindView(R.id.imageViewShoppingCart)
+    ImageView backButton;
     private List<Product> mCartList;
     private ProductAdapter mProductAdapter;
 
@@ -25,7 +29,14 @@ public class ShoppingCartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppingcart);
-        userLocation = Parcels.unwrap(getIntent().getParcelableExtra("userLocation"));
+        ButterKnife.bind(this);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mCartList = ShoppingCartHelper.getCartList();
 

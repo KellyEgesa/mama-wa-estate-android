@@ -49,13 +49,13 @@
         <ListView
             android:id="@+id/ListViewCatalog"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:background="@drawable/main_card"
             android:choiceMode="multipleChoice"
             android:clickable="true"
             android:divider="@color/secondary"
-            android:scrollbarSize="0.5dp"/>
+            android:scrollbarSize="0.5dp" />
 
     </RelativeLayout>
 

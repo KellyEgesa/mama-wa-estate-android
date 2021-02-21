@@ -9,9 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mamawaestate.android.userLocation.UserLocation;
 
-import org.parceler.Parcels;
-
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class CheckOutActivity extends AppCompatActivity {
     UserLocation userLocation;
@@ -24,6 +23,7 @@ public class CheckOutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+        ButterKnife.bind(this);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,12 +32,12 @@ public class CheckOutActivity extends AppCompatActivity {
             }
         });
 
-        userLocation = Parcels.unwrap(getIntent().getParcelableExtra("userLocation"));
-        if (userLocation.getAddress() != null) {
-            mTextViewCurrentLocation.setText(userLocation.getAddress());
-        } else {
-            mTextViewCurrentLocation.setText(userLocation.getName());
-        }
+//        userLocation = Parcels.unwrap(getIntent().getParcelableExtra("userLocation"));
+//        if (userLocation.getAddress() != null) {
+//            mTextViewCurrentLocation.setText(userLocation.getAddress());
+//        } else {
+//            mTextViewCurrentLocation.setText(userLocation.getName());
+//        }
 
     }
 }
