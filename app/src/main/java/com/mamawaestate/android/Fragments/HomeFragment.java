@@ -30,7 +30,7 @@ import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.mamawaestate.android.R;
-import com.mamawaestate.android.userLocation.UserLocation;
+import com.mamawaestate.android.models.UserLocation;
 
 import java.util.ArrayList;
 import java.util.Collections;

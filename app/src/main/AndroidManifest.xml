@@ -19,7 +19,6 @@
         android:theme="@style/Theme.Mamawaestate">
 
         <activity android:name=".ShoppingCartActivity"></activity>
-        <activity android:name=".ProductDetailsFragment" />
         <activity android:name=".CatalogActivity" />
         <activity android:name=".MapActivity"></activity>
 
@@ -44,7 +43,7 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
+        <meta-userData
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 

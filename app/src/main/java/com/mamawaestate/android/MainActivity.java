@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mamawaestate.android.Adapters.ListVendorsAdapter;
 import com.mamawaestate.android.models.Vendors;
-import com.mamawaestate.android.userLocation.UserLocation;
+import com.mamawaestate.android.models.UserLocation;
 
 import org.parceler.Parcels;
 

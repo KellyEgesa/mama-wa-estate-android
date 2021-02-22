@@ -13,8 +13,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mamawaestate.android.Network.BackEndApi;
+import com.mamawaestate.android.Network.BackEndClient;
+import com.mamawaestate.android.models.UserData;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -30,6 +37,10 @@ public class SignUpActivity extends AppCompatActivity {
     Button createUser;
     @BindView(R.id.loginTextView)
     TextView logIn;
+    @BindView(R.id.firstNameEditText)
+    EditText mFirstName;
+    @BindView(R.id.lastNameEditText)
+    EditText mLastName;
     @BindView(R.id.checkBoxVendor)
     CheckBox mCheckBoxVendor;
 
@@ -61,16 +72,17 @@ public class SignUpActivity extends AppCompatActivity {
                 createUser();
             }
         });
-
     }
 
     private void createUser() {
         String userName = mUserName.getText().toString().trim();
+        String firstName = mFirstName.getText().toString().trim();
+        String lastName = mLastName.getText().toString().trim();
         String email = mUserEmail.getText().toString().trim();
         String password = mUserPassword.getText().toString().trim();
         String confirmPassword = mConfirmPassword.getText().toString().trim();
 
-        if (!isValidUserName(userName) || !isEmailValid(email) || !isValidPassword(password, confirmPassword)) {
+        if (!isValidUserName(userName, 1) ||!isValidUserName(firstName, 2) ||!isValidUserName(lastName, 3) || !isEmailValid(email) || !isValidPassword(password, confirmPassword)) {
             return;
         }
 
@@ -79,9 +91,26 @@ public class SignUpActivity extends AppCompatActivity {
         if (mCheckBoxVendor.isChecked()) {
 
         } else {
-            Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
+            UserData userData = new UserData(userName, email,firstName, lastName, password);
+            BackEndApi client = BackEndClient.urlRequest();
+            Call<UserData> call = client.registerUser(userData);
+            call.enqueue(new Callback<UserData>() {
+                @Override
+                public void onResponse(Call<UserData> call, Response<UserData> response) {
+                    if(response.isSuccessful()){
+                        Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<UserData> call, Throwable t) {
+
+                }
+            });
+
+
 
         }
     }
@@ -102,9 +131,15 @@ public class SignUpActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean isValidUserName(String name) {
+    private boolean isValidUserName(String name, int position) {
         if (name.equals("")) {
-            mUserName.setError("Enter a name");
+            if (position == 1) {
+                mUserName.setError("Enter a valid Username");
+            } else if (position == 2) {
+                mFirstName.setError("Enter a valid first name");
+            } else {
+                mLastName.setError("Enter a valid last name");
+            }
             return false;
         }
         return true;
