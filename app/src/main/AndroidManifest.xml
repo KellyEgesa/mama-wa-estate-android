@@ -17,8 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mamawaestate">
-        <activity android:name=".MainActivity2"></activity>
-        <activity android:name=".Vendor_items" />
+        <activity android:name=".Row_items"></activity>
+        <activity android:name=".Detail" />
         <activity android:name=".ProductsActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
@@ -34,7 +34,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".vendorregister">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -11,14 +11,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class vendorregister extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton radioButton;
     TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.vendorregistor);
         radioGroup = findViewById(R.id.radioGroup);
         textView = findViewById(R.id.text_view_selected);
         Button buttonApply = findViewById(R.id.button_apply);
