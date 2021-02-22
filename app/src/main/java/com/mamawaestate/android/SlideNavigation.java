@@ -31,7 +31,7 @@ public class SlideNavigation {
 
         cart = activity.findViewById(R.id.menu_cart);
         logout = activity.findViewById(R.id.menu_logout);
-        user_name = activity.findViewById(R.id.user_name);
+//        user_name = activity.findViewById(R.id.user_name);
 
 
         user_img.setOnClickListener(new View.OnClickListener() {
