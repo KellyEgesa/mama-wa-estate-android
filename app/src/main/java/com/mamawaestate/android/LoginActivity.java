@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
-
+                Toast.makeText(LoginActivity.this,"WElcome to Mama wa Estate android application",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -94,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         Log.i("AAAA", String.valueOf(Islogin));
         if(Islogin)
         {   // condition true means user is already login
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MapActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
@@ -112,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MapActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         progressDialog.dismiss();

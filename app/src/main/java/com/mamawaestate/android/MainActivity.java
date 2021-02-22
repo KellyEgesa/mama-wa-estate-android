@@ -28,8 +28,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-//import androidx.fragment.app.FragmentManager;
-//import androidx.fragment.app.FragmentTransaction;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -114,8 +112,10 @@ public class MainActivity extends AppCompatActivity {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
-                startActivity(intent);
+                Intent viewShoppingCartIntent = new Intent(getBaseContext(), ShoppingCartActivity.class);
+                viewShoppingCartIntent.putExtra("userLocation", Parcels.wrap(userLocation));
+                startActivity(viewShoppingCartIntent);
+
             }
         });
 

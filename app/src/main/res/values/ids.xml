@@ -5,4 +5,5 @@
     <item name="TextViewItem" type="id" />
     <item name="textViewQuantity" type="id" />
     <item name="ImageViewItem" type="id" />
+    <item name="ProceedToCheckout" type="id" />
 </resources>

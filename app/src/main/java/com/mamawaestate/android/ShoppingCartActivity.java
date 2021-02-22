@@ -42,7 +42,7 @@ public class ShoppingCartActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                Intent productDetailsIntent = new Intent(getBaseContext(), ProductDetailsActivity.class);
+                Intent productDetailsIntent = new Intent(getBaseContext(), ProductDetailsFragment.class);
                 productDetailsIntent.putExtra(ShoppingCartHelper.PRODUCT_INDEX, position);
                 startActivity(productDetailsIntent);
             }
