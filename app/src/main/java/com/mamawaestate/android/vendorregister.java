@@ -40,23 +40,15 @@ public class vendorregister extends AppCompatActivity {
     }
 
     private void init() {
-        findViewById(R.id.activity_main_login_button).setOnClickListener(
+        findViewById(R.id.registerButton).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(MainActivity.this
-                                , LogInActivity.class);
+                        Intent intent = new Intent(vendorregister.this
+                                , SellFragment.class);
                         startActivity(intent);
                     }
                 });
-        findViewById(R.id.activity_main_signup_button).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(MainActivity.this
-                                , RegisterActivity.class);
-                        startActivity(intent);
-                    }
-                });
+
     }
 }
