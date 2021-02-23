@@ -98,6 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<UserData> call, Response<UserData> response) {
                     if(response.isSuccessful()){
+                        progressDialog.dismiss();
                         Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
@@ -106,7 +107,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<UserData> call, Throwable t) {
-
+progressDialog.dismiss();
                 }
             });
 

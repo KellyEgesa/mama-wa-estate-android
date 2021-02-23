@@ -21,7 +21,6 @@
         <activity android:name=".ShoppingCartActivity"></activity>
         <activity android:name=".CatalogActivity" />
         <activity android:name=".MapActivity"></activity>
-
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
 
@@ -43,7 +42,7 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-userData
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
