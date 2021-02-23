@@ -22,7 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.mamawaestate.android.userLocation.UserLocation;
+import com.mamawaestate.android.models.UserLocation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

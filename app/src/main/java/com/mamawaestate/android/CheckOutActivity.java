@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mamawaestate.android.userLocation.UserLocation;
+import com.mamawaestate.android.models.UserLocation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
