@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
-                Toast.makeText(LoginActivity.this,"WElcome to Mama wa Estate android application",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"Welcome to Mama wa Estate android application",Toast.LENGTH_SHORT).show();
 
             }
         });
