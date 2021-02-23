@@ -107,7 +107,7 @@
                     android:contentDescription="@string/locationpin"
                     android:padding="8dp"
                     android:src="@drawable/location_pin"
-                    android:tint="@color/colorAccent" />
+                    app:tint="@color/colorAccent" />
 
             </LinearLayout>
 

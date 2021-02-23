@@ -1,6 +1,7 @@
 package com.mamawaestate.android;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,5 +37,26 @@ public class vendorregister extends AppCompatActivity {
         radioButton = findViewById(radioId);
         Toast.makeText(this, "Selected Radio Button: " + radioButton.getText(),
                 Toast.LENGTH_SHORT).show();
+    }
+
+    private void init() {
+        findViewById(R.id.activity_main_login_button).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this
+                                , LogInActivity.class);
+                        startActivity(intent);
+                    }
+                });
+        findViewById(R.id.activity_main_signup_button).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this
+                                , RegisterActivity.class);
+                        startActivity(intent);
+                    }
+                });
     }
 }

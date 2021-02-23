@@ -16,5 +16,6 @@
     <string name="locationpin">locationpin</string>
     <string name="your_phone">yourphone no</string>
     <string name="reg_once">reg_once</string>
+    <string name="product_name">product_name</string>
 
 </resources>
