@@ -47,10 +47,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" /><![CDATA[
 >>>>>>> 21aad4019a9d8630f3a010486af01685887e05ca
 =======
-        <activity android:name=".registervendor"></activity>
+        ]]>
         <activity android:name=".MainActivity2" />
 >>>>>>> 107fdcc2ccafe0573a88f0a93b507bf94ba9e893
         <!--
