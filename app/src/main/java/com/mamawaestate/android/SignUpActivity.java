@@ -82,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
         String password = mUserPassword.getText().toString().trim();
         String confirmPassword = mConfirmPassword.getText().toString().trim();
 
-        if (!isValidUserName(userName, 1) ||!isValidUserName(firstName, 2) ||!isValidUserName(lastName, 3) || !isEmailValid(email) || !isValidPassword(password, confirmPassword)) {
+        if (!isValidUserName(userName, 1) || !isValidUserName(firstName, 2) || !isValidUserName(lastName, 3) || !isEmailValid(email) || !isValidPassword(password, confirmPassword)) {
             return;
         }
 
@@ -91,13 +91,13 @@ public class SignUpActivity extends AppCompatActivity {
         if (mCheckBoxVendor.isChecked()) {
 
         } else {
-            UserData userData = new UserData(userName, email,firstName, lastName, password);
+            UserData userData = new UserData(userName, email, firstName, lastName, password);
             BackEndApi client = BackEndClient.urlRequest();
             Call<UserData> call = client.registerUser(userData);
             call.enqueue(new Callback<UserData>() {
                 @Override
                 public void onResponse(Call<UserData> call, Response<UserData> response) {
-                    if(response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         progressDialog.dismiss();
                         Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -107,10 +107,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<UserData> call, Throwable t) {
-progressDialog.dismiss();
+                    progressDialog.dismiss();
                 }
             });
-
 
 
         }

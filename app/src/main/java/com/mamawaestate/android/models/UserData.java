@@ -3,6 +3,9 @@ package com.mamawaestate.android.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class UserData {
 
     @SerializedName("id")
@@ -66,6 +69,10 @@ public class UserData {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
+    }
+    public UserData(String username,String password){
+        this.username = username;
         this.password = password;
     }
 
