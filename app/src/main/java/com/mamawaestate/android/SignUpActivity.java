@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,8 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    @BindView(R.id.showExtra)
+    LinearLayout mShowExtra;
     @BindView(R.id.nameEditText)
     EditText mUserName;
     @BindView(R.id.emailEditText)
@@ -66,6 +69,12 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        if(mCheckBoxVendor.isChecked()){
+            mShowExtra.setVisibility(View.VISIBLE);
+        }else {
+            mShowExtra.setVisibility(View.GONE);
+        }
+
         createUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +98,6 @@ public class SignUpActivity extends AppCompatActivity {
         progressDialog.show();
 
         if (mCheckBoxVendor.isChecked()) {
-
-        } else {
             UserData userData = new UserData(userName, email, firstName, lastName, password);
             BackEndApi client = BackEndClient.urlRequest();
             Call<UserData> call = client.registerUser(userData);
@@ -99,7 +106,7 @@ public class SignUpActivity extends AppCompatActivity {
                 public void onResponse(Call<UserData> call, Response<UserData> response) {
                     if (response.isSuccessful()) {
                         progressDialog.dismiss();
-                        Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
+                        Intent intent = new Intent(SignUpActivity.this, vendorregister.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
@@ -110,6 +117,8 @@ public class SignUpActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 }
             });
+        } else {
+
 
 
         }

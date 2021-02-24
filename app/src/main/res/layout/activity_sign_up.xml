@@ -39,48 +39,6 @@
             android:textColorLink="@color/colorPrimary"
             android:textSize="20sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/firstNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2.5dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/et_style"
-                android:drawableLeft="@drawable/person_add_24"
-                android:drawablePadding="10dp"
-                android:hint="First Name"
-                android:nextFocusDown="@+id/passwordEditText"
-                android:padding="10dp"
-                android:textColor="#161e24"
-                android:textColorHint="@color/hints_2"
-                android:textColorLink="@color/colorPrimary"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/lastNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2.5dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/et_style"
-                android:drawableLeft="@drawable/person_add_24"
-                android:drawablePadding="10dp"
-                android:hint="Last Name"
-                android:nextFocusDown="@+id/passwordEditText"
-                android:padding="10dp"
-                android:textColor="#161e24"
-                android:textColorHint="@color/hints_2"
-                android:textColorLink="@color/colorPrimary"
-                android:textSize="20sp" />
-        </LinearLayout>
-
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
@@ -139,6 +97,50 @@
             android:layout_height="wrap_content"
             android:text="Sell With Us"
             android:textColor="#161e24" />
+
+        <LinearLayout
+            android:id="@+id/showExtra"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/firstNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2.5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/et_style"
+                android:drawableLeft="@drawable/person_add_24"
+                android:drawablePadding="10dp"
+                android:hint="First Name"
+                android:nextFocusDown="@+id/passwordEditText"
+                android:padding="10dp"
+                android:textColor="#161e24"
+                android:textColorHint="@color/hints_2"
+                android:textColorLink="@color/colorPrimary"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/lastNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2.5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/et_style"
+                android:drawableLeft="@drawable/person_add_24"
+                android:drawablePadding="10dp"
+                android:hint="Last Name"
+                android:nextFocusDown="@+id/passwordEditText"
+                android:padding="10dp"
+                android:textColor="#161e24"
+                android:textColorHint="@color/hints_2"
+                android:textColorLink="@color/colorPrimary"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/createUserButton"
