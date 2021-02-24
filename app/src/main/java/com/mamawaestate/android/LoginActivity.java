@@ -150,8 +150,6 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-
-
     private boolean isValidPassword(String password) {
         if (password.length() < 6) {
             userPassword.setError("Please enter a password containing at least 6 characters");
