@@ -11,7 +11,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,19 +21,26 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.mamawaestate.android.userLocation.UserLocation;
+import com.mamawaestate.android.Network.BackEndApi;
+import com.mamawaestate.android.Network.BackEndClient;
+import com.mamawaestate.android.models.UserData;
+import com.mamawaestate.android.models.UserLocation;
+
+import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-
 
 
     @BindView(R.id.registerTextView2)
     TextView createAccount;
     @BindView(R.id.emailEditText2)
-    EditText userEmail;
+    EditText mUserName;
     @BindView(R.id.passwordEditText2)
     EditText userPassword;
     @BindView(R.id.loginButton2)
@@ -48,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor mEditor;
-
 
 
     @Override
@@ -79,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
-                Toast.makeText(LoginActivity.this,"WElcome to Mama wa Estate android application",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Welcome to Mama wa Estate android application", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -93,8 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 
         boolean Islogin = preferences.getBoolean("Islogin", false);
         Log.i("AAAA", String.valueOf(Islogin));
-        if(Islogin)
-        {   // condition true means user is already login
+        if (Islogin) {   // condition true means user is already login
             Intent intent = new Intent(LoginActivity.this, MapActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -103,28 +107,44 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void logIn() {
-        String userEmailText = userEmail.getText().toString().trim();
+        String userName = mUserName.getText().toString().trim();
         String userPasswordText = userPassword.getText().toString().trim();
 
-        if (!isEmailValid(userEmailText) || !isValidPassword(userPasswordText)) {
+        if (!isValidUserName(userName) || !isValidPassword(userPasswordText)) {
             return;
         }
 
         progressDialog.show();
 
+        UserData userData = new UserData(userName, userPasswordText);
+        BackEndApi client = BackEndClient.urlRequest();
+        Call<UserData> call = client.getLogin(userData);
+        call.enqueue(new Callback<UserData>() {
+            @Override
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
+                if(response.isSuccessful()){
+                    progressDialog.dismiss();
+                    Intent intent = new Intent(LoginActivity.this, MapActivity.class);
+                    UserData user = response.body();
+                    intent.putExtra("userData", Parcels.wrap(user));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            }
 
-        Intent intent = new Intent(LoginActivity.this, MapActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        progressDialog.dismiss();
+            @Override
+            public void onFailure(Call<UserData> call, Throwable t) {
+
+            }
+        });
 
     }
 
 
-    private boolean isEmailValid(String email) {
-        boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
-        if (!isGoodEmail) {
-            userEmail.setError("Enter a valid email address");
+    private boolean isValidUserName(String name) {
+        if (name.equals("")) {
+
+            mUserName.setError("Enter a valid Username");
             return false;
         }
         return true;
@@ -146,8 +166,4 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
 }
-
-
-

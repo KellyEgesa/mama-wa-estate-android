@@ -1,21 +1,27 @@
 package com.mamawaestate.android;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mamawaestate.android.models.UserLocation;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class ShoppingCartActivity extends Activity {
-    @BindView(R.id.ProceedToCheckout)
-    Button mProceedToCheckout;
-
+public class ShoppingCartActivity extends AppCompatActivity {
+    UserLocation userLocation;
+    @BindView(R.id.imageViewShoppingCart)
+    ImageView backButton;
     private List<Product> mCartList;
     private ProductAdapter mProductAdapter;
 
@@ -23,7 +29,14 @@ public class ShoppingCartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppingcart);
+        ButterKnife.bind(this);
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mCartList = ShoppingCartHelper.getCartList();
 
@@ -34,6 +47,14 @@ public class ShoppingCartActivity extends Activity {
 
         // Create the list
         final ListView listViewCatalog = (ListView) findViewById(R.id.ListViewCatalog);
+        FloatingActionButton proceedToCheckout = (FloatingActionButton) findViewById(R.id.floatingActionViewCheckout);
+        proceedToCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingCartActivity.this, CheckOutActivity.class);
+                startActivity(intent);
+            }
+        });
         mProductAdapter = new ProductAdapter(mCartList, getLayoutInflater(), true);
         listViewCatalog.setAdapter(mProductAdapter);
 
@@ -45,9 +66,14 @@ public class ShoppingCartActivity extends Activity {
                 Intent productDetailsIntent = new Intent(getBaseContext(), ProductDetailsFragment.class);
                 productDetailsIntent.putExtra(ShoppingCartHelper.PRODUCT_INDEX, position);
                 startActivity(productDetailsIntent);
+                FragmentManager fm = getSupportFragmentManager();
+                ProductDetailsFragment productDetailsFragment = new ProductDetailsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt(ShoppingCartHelper.PRODUCT_INDEX, position);
+                productDetailsFragment.setArguments(bundle);
+                productDetailsFragment.show(fm, "Product Details");
             }
         });
-
 
 
     }

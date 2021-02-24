@@ -38,7 +38,7 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mamawaestate.android.userLocation.UserLocation;
+import com.mamawaestate.android.models.UserLocation;
 
 import org.parceler.Parcels;
 
@@ -98,7 +98,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         setUserLocation(googleMap);
         setNewUserLocation(googleMap);
         getLastLocationNewMethod(googleMap);
