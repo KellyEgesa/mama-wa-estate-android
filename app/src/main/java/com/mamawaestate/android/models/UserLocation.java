@@ -1,4 +1,4 @@
-package com.mamawaestate.android.userLocation;
+package com.mamawaestate.android.models;
 
 import org.parceler.Parcel;
 
