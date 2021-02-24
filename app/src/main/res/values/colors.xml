@@ -3,15 +3,15 @@
 
     <color name="gray">#9f9f9f</color>
     <color name="bg_gray">#e6e6e5</color>
-<<<<<<< HEAD
+
     <color name="colorAccent">#f39225</color>
     <color name="colorPrimary">#9fa8da</color>
-=======
->>>>>>> 107fdcc2ccafe0573a88f0a93b507bf94ba9e893
+
+
     <color name="colorPrimaryDark">#2f383a</color>
     <color name="gray_lite">#649f9f9f</color>
     <color name="secondary">#B3DCE8</color>
-<<<<<<< HEAD
+
     <color name="primary">#F3F3F3</color>
 
 
@@ -33,11 +33,5 @@
     <color name="hint">#767676</color>
     <color name="textWhite">#F3F1F1</color>
     <color name="textBlack">#090101</color>
-=======
->>>>>>> 107fdcc2ccafe0573a88f0a93b507bf94ba9e893
 
-    <color name="colorPrimary">#9fa8da</color>
-    <color name="colorAccent">#131b1f</color>
-    <color name="textBlack">#000000</color>
-    <color name="textWhite">#FFFFFF</color>
 </resources>
