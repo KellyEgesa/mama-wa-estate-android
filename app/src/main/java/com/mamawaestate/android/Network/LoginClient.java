@@ -33,7 +33,6 @@ public class LoginClient {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-
         return retrofit.create(LoginApi.class);
     }
 }
