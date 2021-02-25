@@ -4,12 +4,15 @@ package com.mamawaestate.android;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +28,8 @@ import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    @BindView(R.id.showExtra)
+    LinearLayout mShowExtra;
     @BindView(R.id.nameEditText)
     EditText mUserName;
     @BindView(R.id.emailEditText)
@@ -74,6 +79,15 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
+    public void itemClicked(View view){
+        CheckBox checkBox = (CheckBox)view;
+        if(checkBox.isChecked()){
+            mShowExtra.setVisibility(View.VISIBLE);
+        }else {
+            mShowExtra.setVisibility(View.GONE);
+        }
+    }
+
     private void createUser() {
         String userName = mUserName.getText().toString().trim();
         String firstName = mFirstName.getText().toString().trim();
@@ -82,24 +96,22 @@ public class SignUpActivity extends AppCompatActivity {
         String password = mUserPassword.getText().toString().trim();
         String confirmPassword = mConfirmPassword.getText().toString().trim();
 
-        if (!isValidUserName(userName, 1) || !isValidUserName(firstName, 2) || !isValidUserName(lastName, 3) || !isEmailValid(email) || !isValidPassword(password, confirmPassword)) {
+        if (!isValidUserName(userName, 1) || !isEmailValid(email) || !isValidPassword(password, confirmPassword)) {
             return;
         }
 
         progressDialog.show();
 
         if (mCheckBoxVendor.isChecked()) {
-
-        } else {
             UserData userData = new UserData(userName, email, firstName, lastName, password);
             BackEndApi client = BackEndClient.urlRequest();
-            Call<UserData> call = client.registerUser(userData);
+            Call<UserData> call = client.registerVendor(userData);
             call.enqueue(new Callback<UserData>() {
                 @Override
                 public void onResponse(Call<UserData> call, Response<UserData> response) {
                     if (response.isSuccessful()) {
                         progressDialog.dismiss();
-                        Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
+                        Intent intent = new Intent(SignUpActivity.this, vendorregister.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
@@ -110,8 +122,27 @@ public class SignUpActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 }
             });
-
-
+        } else {
+            UserData userData = new UserData(userName, email, password);
+            BackEndApi client = BackEndClient.urlRequest();
+            Call<UserData> call = client.registerConsumer(userData);
+            call.enqueue(new Callback<UserData>() {
+                @Override
+                public void onResponse(Call<UserData> call, Response<UserData> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(SignUpActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
+                        Log.d("Response", response.body().toString());
+                        progressDialog.dismiss();
+                        Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                }
+                @Override
+                public void onFailure(Call<UserData> call, Throwable t) {
+                    progressDialog.dismiss();
+                }
+            });
         }
     }
 

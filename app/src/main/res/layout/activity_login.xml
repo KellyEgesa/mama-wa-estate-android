@@ -43,7 +43,7 @@
             android:background="@drawable/et_style"
             android:drawableLeft="@drawable/email_24"
             android:drawablePadding="10dp"
-            android:hint="UserName"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:nextFocusDown="@+id/passwordEditText"
             android:padding="10dp"
@@ -68,6 +68,13 @@
             android:textColorHint="@color/hints_2"
             android:textColorLink="@color/colorPrimary"
             android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkBoxVendor2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I am a vendor"
+            android:textColor="#161e24" />
 
         <Button
             android:id="@+id/loginButton2"

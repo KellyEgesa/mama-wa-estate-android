@@ -76,6 +76,17 @@ public class UserData {
         this.password = password;
     }
 
+    public UserData(String email,String password, int number){
+        this.email = email;
+        this.password = password;
+    }
+
+    public UserData(String username,String email,String password){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public String getPassword() {
         return password;
     }

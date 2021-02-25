@@ -8,7 +8,11 @@ import retrofit2.http.POST;
 
 public interface BackEndApi {
     @POST("/api/auth/register")
-    Call<UserData> registerUser(@Body UserData userData);
+    Call<UserData> registerVendor(@Body UserData userData);
     @POST("/api/auth/login")
-    Call<UserData> getLogin(@Body UserData userData);
+    Call<UserData> loginVendor(@Body UserData userData);
+    @POST("/api/v1/register/")
+    Call<UserData> registerConsumer(@Body UserData userData);
+    @POST("/api/v1/login/")
+    Call<UserData> loginUser(@Body UserData userData);
 }

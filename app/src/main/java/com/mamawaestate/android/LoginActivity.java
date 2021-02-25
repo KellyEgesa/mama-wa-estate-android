@@ -10,12 +10,12 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,11 +36,12 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-
+    @BindView(R.id.checkBoxVendor2)
+    CheckBox checkBox;
     @BindView(R.id.registerTextView2)
     TextView createAccount;
     @BindView(R.id.emailEditText2)
-    EditText mUserName;
+    EditText mUserEmail;
     @BindView(R.id.passwordEditText2)
     EditText userPassword;
     @BindView(R.id.loginButton2)
@@ -84,10 +85,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
-                Toast.makeText(LoginActivity.this, "Welcome to Mama wa Estate android application", Toast.LENGTH_SHORT).show();
-
             }
         });
+
+        if(checkBox.isChecked()){
+            mUserEmail.setHint("UserName");
+        }
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,55 +99,93 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        boolean Islogin = preferences.getBoolean("Islogin", false);
-        Log.i("AAAA", String.valueOf(Islogin));
-        if (Islogin) {   // condition true means user is already login
-            Intent intent = new Intent(LoginActivity.this, MapActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        }
     }
 
 
     private void logIn() {
-        String userName = mUserName.getText().toString().trim();
+        String userName = mUserEmail.getText().toString().trim();
         String userPasswordText = userPassword.getText().toString().trim();
-
-        if (!isValidUserName(userName) || !isValidPassword(userPasswordText)) {
-            return;
-        }
 
         progressDialog.show();
 
-        UserData userData = new UserData(userName, userPasswordText);
-        BackEndApi client = BackEndClient.urlRequest();
-        Call<UserData> call = client.getLogin(userData);
-        call.enqueue(new Callback<UserData>() {
-            @Override
-            public void onResponse(Call<UserData> call, Response<UserData> response) {
-                if(response.isSuccessful()){
-                    progressDialog.dismiss();
-                    Intent intent = new Intent(LoginActivity.this, MapActivity.class);
-                    UserData user = response.body();
-                    intent.putExtra("userData", Parcels.wrap(user));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+        if(checkBox.isChecked()){
+            if (!isValidUserName(userName) || !isValidPassword(userPasswordText)) {
+                return;
+            }
+
+            UserData userData = new UserData(userName, userPasswordText);
+            BackEndApi client = BackEndClient.urlRequest();
+            Call<UserData> call = client.loginVendor(userData);
+            call.enqueue(new Callback<UserData>() {
+                @Override
+                public void onResponse(Call<UserData> call, Response<UserData> response) {
+                    if (response.isSuccessful()) {
+                        progressDialog.dismiss();
+                        Intent intent = new Intent(LoginActivity.this, vendorregister.class);
+                        UserData user = response.body();
+                        intent.putExtra("userData", Parcels.wrap(user));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
                 }
+
+                @Override
+                public void onFailure(Call<UserData> call, Throwable t) {
+
+                }
+            });
+
+        }
+        else{
+            if(!isEmailValid(userName)  || !isValidPassword(userPasswordText)){
+                return;
             }
 
-            @Override
-            public void onFailure(Call<UserData> call, Throwable t) {
+            UserData userData = new UserData(userName, userPasswordText, 1);
+            BackEndApi client = BackEndClient.urlRequest();
+            Call<UserData> call = client.loginUser(userData);
+            call.enqueue(new Callback<UserData>() {
+                @Override
+                public void onResponse(Call<UserData> call, Response<UserData> response) {
+                    if (response.isSuccessful()) {
+                        progressDialog.dismiss();
+                        Intent intent = new Intent(LoginActivity.this, MapActivity.class);
+                        UserData user = response.body();
+                        intent.putExtra("userData", Parcels.wrap(user));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                }
 
-            }
-        });
+                @Override
+                public void onFailure(Call<UserData> call, Throwable t) {
+
+                }
+            });
+
+        }
+
+
+
+
+
+
 
     }
 
+    private boolean isEmailValid(String email) {
+        boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        if (!isGoodEmail) {
+            mUserEmail.setError("Enter a valid email address");
+            return false;
+        }
+        return true;
+    }
 
     private boolean isValidUserName(String name) {
         if (name.equals("")) {
 
-            mUserName.setError("Enter a valid Username");
+            mUserEmail.setError("Enter a valid Username");
             return false;
         }
         return true;
