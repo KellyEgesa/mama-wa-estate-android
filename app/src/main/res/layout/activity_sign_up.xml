@@ -95,6 +95,7 @@
             android:id="@+id/checkBoxVendor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="itemClicked"
             android:text="Sell With Us"
             android:textColor="#161e24" />
 

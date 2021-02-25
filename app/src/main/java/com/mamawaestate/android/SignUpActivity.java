@@ -4,6 +4,7 @@ package com.mamawaestate.android;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,18 +71,21 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        if(mCheckBoxVendor.isChecked()){
-            mShowExtra.setVisibility(View.VISIBLE);
-        }else {
-            mShowExtra.setVisibility(View.GONE);
-        }
-
         createUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createUser();
             }
         });
+    }
+
+    public void itemClicked(View view){
+        CheckBox checkBox = (CheckBox)view;
+        if(checkBox.isChecked()){
+            mShowExtra.setVisibility(View.VISIBLE);
+        }else {
+            mShowExtra.setVisibility(View.GONE);
+        }
     }
 
     private void createUser() {
@@ -125,6 +130,8 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<UserData> call, Response<UserData> response) {
                     if (response.isSuccessful()) {
+                        Toast.makeText(SignUpActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
+                        Log.d("Response", response.body().toString());
                         progressDialog.dismiss();
                         Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
