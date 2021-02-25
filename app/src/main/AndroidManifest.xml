@@ -25,22 +25,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mamawaestate">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <activity android:name=".ProductsActivity" />
+
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
-=======
+
 
         <activity android:name=".ShoppingCartActivity"></activity>
-<<<<<<< HEAD
         <activity android:name=".ProductDetailsFragment" />
-=======
->>>>>>> e56df70e5354c74043fc29a83025eed87e0dc07a
         <activity android:name=".CatalogActivity" />
         <activity android:name=".MapActivity"></activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity" />
+
 
         <activity
             android:name=".SplashActivity"
@@ -51,12 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" /><![CDATA[
->>>>>>> 21aad4019a9d8630f3a010486af01685887e05ca
-=======
-        ]]>
-        <activity android:name=".MainActivity2" />
->>>>>>> 107fdcc2ccafe0573a88f0a93b507bf94ba9e893
+        <activity android:name=".MainActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -69,22 +59,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <activity android:name=".vendorregister">
-=======
-        <activity android:name=".MainActivity">
->>>>>>> 107fdcc2ccafe0573a88f0a93b507bf94ba9e893
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".vendorregister"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-=======
+
         <activity android:name=".CheckOutActivity" />
 
->>>>>>> 21aad4019a9d8630f3a010486af01685887e05ca
+
     </application>
 
 </manifest>

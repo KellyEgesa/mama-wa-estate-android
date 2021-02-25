@@ -1,5 +1,5 @@
 
-package com.mamawaestate.android.com.moringaschool.mamawaestate;
+package com.mamawaestate.android.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

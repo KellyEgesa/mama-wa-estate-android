@@ -1,5 +1,5 @@
 
-package com.mamawaestate.android.com.moringaschool.mamawaestate;
+package com.mamawaestate.android.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -14,7 +14,7 @@ public class Accounts {
     private Integer status;
     @SerializedName("data")
     @Expose
-    private com.mamawaestate.android.com.moringaschool.mamawaestate.Data data;
+    private Data data;
 
     /**
      * No args constructor for use in serialization
@@ -29,7 +29,7 @@ public class Accounts {
      * @param success
      * @param status
      */
-    public Accounts(String success, Integer status, com.mamawaestate.android.com.moringaschool.mamawaestate.Data data) {
+    public Accounts(String success, Integer status, Data data) {
         super();
         this.success = success;
         this.status = status;
@@ -52,11 +52,11 @@ public class Accounts {
         this.status = status;
     }
 
-    public com.mamawaestate.android.com.moringaschool.mamawaestate.Data getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(com.mamawaestate.android.com.moringaschool.mamawaestate.Data data) {
+    public void setData(Data data) {
         this.data = data;
     }
 
