@@ -79,11 +79,11 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    public void itemClicked(View view){
-        CheckBox checkBox = (CheckBox)view;
-        if(checkBox.isChecked()){
+    public void itemClicked(View view) {
+        CheckBox checkBox = (CheckBox) view;
+        if (checkBox.isChecked()) {
             mShowExtra.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mShowExtra.setVisibility(View.GONE);
         }
     }
@@ -136,8 +136,11 @@ public class SignUpActivity extends AppCompatActivity {
                         Intent intent = new Intent(SignUpActivity.this, MapActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                    } else {
+                        Toast.makeText(SignUpActivity.this, String.valueOf(response.isSuccessful()), Toast.LENGTH_LONG).show();
                     }
                 }
+
                 @Override
                 public void onFailure(Call<UserData> call, Throwable t) {
                     progressDialog.dismiss();

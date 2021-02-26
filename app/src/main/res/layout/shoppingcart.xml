@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        app:cardCornerRadius="7.5dp">
+        app:cardCornerRadius="7.5dp"
+        app:cardElevation="5dp">
 
         <TextView
             android:id="@+id/textView1"
@@ -26,6 +27,22 @@
             android:text="Click on a product to edit the quantity">
 
         </TextView>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="7.5dp"
+        app:cardElevation="5dp">
+
+        <TextView
+            android:id="@+id/textViewPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Price in Kshs 1000"
+            android:textAlignment="center" />
     </androidx.cardview.widget.CardView>
 
     <RelativeLayout

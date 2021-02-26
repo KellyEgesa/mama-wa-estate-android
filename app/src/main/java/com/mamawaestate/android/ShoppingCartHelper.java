@@ -19,18 +19,18 @@ public class ShoppingCartHelper {
 
     @SuppressLint("UseCompatLoadingForDrawables")
 
-    public static List<Product> getCatalog(Resources res){
-        if(catalog == null) {
+    public static List<Product> getCatalog(Resources res) {
+        if (catalog == null) {
             catalog = new Vector<Product>();
             catalog.add(new Product("Dead or Alive", res
                     .getDrawable(R.drawable.shoe2),
-                    "Dead or Alive by Tom Clancy with Grant Blackwood", 29.99));
+                    "Dead or Alive by Tom Clancy with Grant Blackwood", 3000));
             catalog.add(new Product("Switch", res
                     .getDrawable(R.drawable.shoe3),
-                    "Switch by Chip Heath and Dan Heath", 24.99));
+                    "Switch by Chip Heath and Dan Heath", 2400));
             catalog.add(new Product("Watchmen", res
                     .getDrawable(R.drawable.shoe),
-                    "Watchmen by Alan Moore and Dave Gibbons", 14.99));
+                    "Watchmen by Alan Moore and Dave Gibbons", 1500));
 
         }
 
@@ -42,14 +42,14 @@ public class ShoppingCartHelper {
         ShoppingCartEntry curEntry = cartMap.get(product);
 
         // If the quantity is zero or less, remove the products
-        if(quantity <= 0) {
-            if(curEntry != null)
+        if (quantity <= 0) {
+            if (curEntry != null)
                 removeProduct(product);
             return;
         }
 
         // If a current cart entry doesn't exist, create one
-        if(curEntry == null) {
+        if (curEntry == null) {
             curEntry = new ShoppingCartEntry(product, quantity);
             cartMap.put(product, curEntry);
             return;
@@ -63,7 +63,7 @@ public class ShoppingCartHelper {
         // Get the current cart entry
         ShoppingCartEntry curEntry = cartMap.get(product);
 
-        if(curEntry != null)
+        if (curEntry != null)
             return curEntry.getQuantity();
 
         return 0;
@@ -75,7 +75,7 @@ public class ShoppingCartHelper {
 
     public static List<Product> getCartList() {
         List<Product> cartList = new Vector<Product>(cartMap.keySet().size());
-        for(Product p : cartMap.keySet()) {
+        for (Product p : cartMap.keySet()) {
             cartList.add(p);
         }
 

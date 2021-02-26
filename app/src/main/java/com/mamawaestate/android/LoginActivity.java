@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        if(checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             mUserEmail.setHint("UserName");
         }
 
@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        if(checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             if (!isValidUserName(userName) || !isValidPassword(userPasswordText)) {
                 return;
             }
@@ -135,40 +135,36 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
-        }
-        else{
-            if(!isEmailValid(userName)  || !isValidPassword(userPasswordText)){
+        } else {
+            if (!isEmailValid(userName) || !isValidPassword(userPasswordText)) {
                 return;
             }
 
-            UserData userData = new UserData(userName, userPasswordText, 1);
-            BackEndApi client = BackEndClient.urlRequest();
-            Call<UserData> call = client.loginUser(userData);
-            call.enqueue(new Callback<UserData>() {
-                @Override
-                public void onResponse(Call<UserData> call, Response<UserData> response) {
-                    if (response.isSuccessful()) {
-                        progressDialog.dismiss();
-                        Intent intent = new Intent(LoginActivity.this, MapActivity.class);
-                        UserData user = response.body();
-                        intent.putExtra("userData", Parcels.wrap(user));
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<UserData> call, Throwable t) {
-
-                }
-            });
+//            UserData userData = new UserData(userName, userPasswordText, 1);
+//            BackEndApi client = BackEndClient.urlRequest();
+//            Call<UserData> call = client.loginUser(userData);
+//            call.enqueue(new Callback<UserData>() {
+//                @Override
+//                public void onResponse(Call<UserData> call, Response<UserData> response) {
+//                    if (response.isSuccessful()) {
+            progressDialog.dismiss();
+            Intent intent = new Intent(LoginActivity.this, MapActivity.class);
+//                        UserData user = response.body();
+//                        intent.putExtra("userData", Parcels.wrap(user));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+//                    } else {
+//                        Toast.makeText(LoginActivity.this, String.valueOf(response.isSuccessful()), Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<UserData> call, Throwable t) {
+//
+//                }
+//            });
 
         }
-
-
-
-
-
 
 
     }

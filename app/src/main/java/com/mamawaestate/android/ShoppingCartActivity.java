@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -22,6 +23,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     UserLocation userLocation;
     @BindView(R.id.imageViewShoppingCart)
     ImageView backButton;
+    @BindView(R.id.textViewPrice)
+    TextView mPrice;
     private List<Product> mCartList;
     private ProductAdapter mProductAdapter;
 
@@ -39,11 +42,18 @@ public class ShoppingCartActivity extends AppCompatActivity {
         });
 
         mCartList = ShoppingCartHelper.getCartList();
+        int price = 0;
+        for (Product product :
+                mCartList) {
+            price += product.price;
+        }
 
         // Make sure to clear the selections
         for (int i = 0; i < mCartList.size(); i++) {
             mCartList.get(i).selected = false;
         }
+
+        mPrice.setText("Price in Kshs " + price);
 
         // Create the list
         final ListView listViewCatalog = (ListView) findViewById(R.id.ListViewCatalog);
