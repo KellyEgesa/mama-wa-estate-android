@@ -22,15 +22,22 @@ public class ShoppingCartHelper {
     public static List<Product> getCatalog(Resources res) {
         if (catalog == null) {
             catalog = new Vector<Product>();
-            catalog.add(new Product("Dead or Alive", res
+
+            catalog.add(new Product("iphone 11", res
+                    .getDrawable(R.drawable.iphone),
+                    "Has liquid Retina  HD display", 103000));
+            catalog.add(new Product("Asics", res
                     .getDrawable(R.drawable.shoe2),
-                    "Dead or Alive by Tom Clancy with Grant Blackwood", 3000));
-            catalog.add(new Product("Switch", res
+                    "Mens gel venture 7 trail running shoes.", 3000));
+            catalog.add(new Product("Headphones", res
+                    .getDrawable(R.drawable.pace),
+                    "High quality pace headphones.", 4000));
+            catalog.add(new Product("Adidas", res
                     .getDrawable(R.drawable.shoe3),
-                    "Switch by Chip Heath and Dan Heath", 2400));
-            catalog.add(new Product("Watchmen", res
+                    "Mens air max excee sneaker.", 2400));
+            catalog.add(new Product("Brooks", res
                     .getDrawable(R.drawable.shoe),
-                    "Watchmen by Alan Moore and Dave Gibbons", 1500));
+                    "Mens range running shoe", 1500));
 
         }
 
