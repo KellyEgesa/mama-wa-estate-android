@@ -22,16 +22,28 @@ public class ShoppingCartHelper {
     public static List<Product> getCatalog(Resources res) {
         if (catalog == null) {
             catalog = new Vector<Product>();
-            catalog.add(new Product("Dead or Alive", res
-                    .getDrawable(R.drawable.shoe2),
-                    "Dead or Alive by Tom Clancy with Grant Blackwood", 3000));
-            catalog.add(new Product("Switch", res
-                    .getDrawable(R.drawable.shoe3),
-                    "Switch by Chip Heath and Dan Heath", 2400));
-            catalog.add(new Product("Watchmen", res
-                    .getDrawable(R.drawable.shoe),
-                    "Watchmen by Alan Moore and Dave Gibbons", 1500));
 
+            catalog.add(new Product("iphone 11", res
+                    .getDrawable(R.drawable.iphone),
+                    "Has liquid Retina  HD display", 103000));
+            catalog.add(new Product("Asics", res
+                    .getDrawable(R.drawable.shoe2),
+                    "Mens gel venture 7 trail running shoes.", 3000));
+            catalog.add(new Product("Headphones", res
+                    .getDrawable(R.drawable.pace),
+                    "High quality pace headphones.", 4000));
+            catalog.add(new Product("Adidas", res
+                    .getDrawable(R.drawable.shoe3),
+                    "Mens air max excee sneaker.", 2400));
+            catalog.add(new Product( "Laptop", res
+                    .getDrawable(R.drawable.laptop),
+                    "6th generations computers with 6 months warranty.", 49000));
+            catalog.add(new Product("Brooks", res
+                    .getDrawable(R.drawable.shoe),
+                    "Mens range running shoe", 1500));
+            catalog.add(new Product("watch", res
+                    .getDrawable(R.drawable.shoe2),
+                    "Generic stylish women quartz leather PU casual wristwatch.", 500));
         }
 
         return catalog;
