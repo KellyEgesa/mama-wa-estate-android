@@ -23,25 +23,25 @@ public class ShoppingCartHelper {
         if (catalog == null) {
             catalog = new Vector<Product>();
 
-            catalog.add(new Product("iphone 11", res
+            catalog.add(new Product("iphone 11", 1, "Electronics", res
                     .getDrawable(R.drawable.iphone),
                     "Has liquid Retina  HD display", 103000));
-            catalog.add(new Product("Asics", res
+            catalog.add(new Product("Asics", 2, "Clothing", res
                     .getDrawable(R.drawable.shoe2),
                     "Mens gel venture 7 trail running shoes.", 3000));
-            catalog.add(new Product("Headphones", res
+            catalog.add(new Product("Headphones", 3, "Electronics", res
                     .getDrawable(R.drawable.pace),
                     "High quality pace headphones.", 4000));
-            catalog.add(new Product("Adidas", res
+            catalog.add(new Product("Adidas", 4, "Clothing", res
                     .getDrawable(R.drawable.shoe3),
                     "Mens air max excee sneaker.", 2400));
-            catalog.add(new Product( "Laptop", res
+            catalog.add(new Product("Laptop", 5, "Electronics", res
                     .getDrawable(R.drawable.laptop),
                     "6th generations computers with 6 months warranty.", 49000));
-            catalog.add(new Product("Brooks", res
+            catalog.add(new Product("Brooks", 6, "Clothing", res
                     .getDrawable(R.drawable.shoe),
                     "Mens range running shoe", 1500));
-            catalog.add(new Product("watch", res
+            catalog.add(new Product("watch", 7, "Clothing", res
                     .getDrawable(R.drawable.shoe2),
                     "Generic stylish women quartz leather PU casual wristwatch.", 500));
         }

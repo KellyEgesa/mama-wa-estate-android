@@ -76,6 +76,10 @@ public class ProductDetailsFragment extends DialogFragment {
             }
         });
 
+        if(ShoppingCartHelper.getProductQuantity(selectedProduct)>1){
+            editTextQuantity.setText(String.valueOf(ShoppingCartHelper.getProductQuantity(selectedProduct)));
+        }
+
         // Update the current quantity in the cart
         TextView textViewCurrentQuantity = (TextView) rootView.findViewById(R.id.textViewCurrentlyInCart);
         textViewCurrentQuantity.setText("Currently in Cart: "

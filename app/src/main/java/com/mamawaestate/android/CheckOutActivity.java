@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mamawaestate.android.models.UserLocation;
 
+import org.parceler.Parcels;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -16,6 +18,10 @@ public class CheckOutActivity extends AppCompatActivity {
     UserLocation userLocation;
     @BindView(R.id.textViewCurrentLocation)
     TextView mTextViewCurrentLocation;
+    @BindView(R.id.totalPrice)
+    TextView mTotalPrice;
+    @BindView(R.id.textProductsPrice)
+    TextView mTextProductsPrice;
     @BindView(R.id.imageViewCheckout)
     ImageView backButton;
 
@@ -32,12 +38,15 @@ public class CheckOutActivity extends AppCompatActivity {
             }
         });
 
-//        userLocation = Parcels.unwrap(getIntent().getParcelableExtra("userLocation"));
-//        if (userLocation.getAddress() != null) {
-//            mTextViewCurrentLocation.setText(userLocation.getAddress());
-//        } else {
-//            mTextViewCurrentLocation.setText(userLocation.getName());
-//        }
+        userLocation = Parcels.unwrap(getIntent().getParcelableExtra("userLocation"));
+        int price = getIntent().getExtras().getInt("totalPrice");
+        mTextProductsPrice.setText(String.valueOf(price));
+        mTotalPrice.setText(String.valueOf(price));
+        if (userLocation.getAddress() != null) {
+            mTextViewCurrentLocation.setText(userLocation.getAddress());
+        } else {
+            mTextViewCurrentLocation.setText(userLocation.getName());
+        }
 
     }
 }

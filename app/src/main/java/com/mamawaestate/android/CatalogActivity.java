@@ -16,6 +16,7 @@ import com.mamawaestate.android.models.Vendors;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,6 +33,7 @@ public class CatalogActivity extends AppCompatActivity {
     @BindView(R.id.imageViewCatalog)
     ImageView backButton;
     private List<Product> mProductList;
+    private List<Product> mProductListFilter = new ArrayList<>();
     private Vendors vendor;
 
     /**
@@ -57,10 +59,15 @@ public class CatalogActivity extends AppCompatActivity {
 
         // Obtain a reference to the product catalog
         mProductList = ShoppingCartHelper.getCatalog(getResources());
+        for (Product product : mProductList) {
+            if (product.category.equals(vendor.getCategory())) {
+                mProductListFilter.add(product);
+            }
+        }
 
         // Create the list
         ListView listViewCatalog = (ListView) findViewById(R.id.ListViewCatalog);
-        listViewCatalog.setAdapter(new ProductAdapter(mProductList, getLayoutInflater(), false));
+        listViewCatalog.setAdapter(new ProductAdapter(mProductListFilter, getLayoutInflater(), false));
 
         listViewCatalog.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -70,7 +77,7 @@ public class CatalogActivity extends AppCompatActivity {
                 FragmentManager fm = getSupportFragmentManager();
                 ProductDetailsFragment productDetailsFragment = new ProductDetailsFragment();
                 Bundle bundle = new Bundle();
-                bundle.putInt(ShoppingCartHelper.PRODUCT_INDEX, position);
+                bundle.putInt(ShoppingCartHelper.PRODUCT_INDEX, (mProductListFilter.get(position).index - 1));
                 productDetailsFragment.setArguments(bundle);
                 productDetailsFragment.show(fm, "Product Details");
             }

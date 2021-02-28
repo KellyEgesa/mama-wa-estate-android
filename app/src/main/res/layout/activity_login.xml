@@ -74,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="I am a vendor"
-            android:textColor="#161e24" />
+            android:textColor="#161e24"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/loginButton2"
@@ -85,7 +86,8 @@
             android:background="@drawable/rounded_corner"
             android:padding="10dp"
             android:text="Log in"
-            android:textColor="#161e24" />
+            android:textColor="#161e24"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/registerTextView2"

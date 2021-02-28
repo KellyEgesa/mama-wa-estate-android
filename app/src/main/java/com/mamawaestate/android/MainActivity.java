@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +18,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mamawaestate.android.Adapters.ListVendorsAdapter;
-import com.mamawaestate.android.models.Vendors;
 import com.mamawaestate.android.models.UserLocation;
+import com.mamawaestate.android.models.Vendors;
 
 import org.parceler.Parcels;
 
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mListVendorsRecyclerView;
     @BindView(R.id.textLocation)
     TextView location;
+    @BindView(R.id.menu_logout)
+    TextView menu_logout;
     @BindView(R.id.ChangeYourLocation) TextView mChangeYourLocation;
     private SharedPreferences preferences;
     private SharedPreferences.Editor mEditor;
@@ -116,6 +119,16 @@ public class MainActivity extends AppCompatActivity {
                 viewShoppingCartIntent.putExtra("userLocation", Parcels.wrap(userLocation));
                 startActivity(viewShoppingCartIntent);
 
+            }
+        });
+
+        menu_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "LogOut clicked", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
             }
         });
 
