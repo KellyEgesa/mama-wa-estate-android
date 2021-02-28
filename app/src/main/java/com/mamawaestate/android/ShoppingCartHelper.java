@@ -35,10 +35,15 @@ public class ShoppingCartHelper {
             catalog.add(new Product("Adidas", res
                     .getDrawable(R.drawable.shoe3),
                     "Mens air max excee sneaker.", 2400));
+            catalog.add(new Product( "Laptop", res
+                    .getDrawable(R.drawable.laptop),
+                    "6th generations computers with 6 months warranty.", 49000));
             catalog.add(new Product("Brooks", res
                     .getDrawable(R.drawable.shoe),
                     "Mens range running shoe", 1500));
-
+            catalog.add(new Product("watch", res
+                    .getDrawable(R.drawable.shoe2),
+                    "Generic stylish women quartz leather PU casual wristwatch.", 500));
         }
 
         return catalog;
